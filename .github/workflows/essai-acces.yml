@@ -1,0 +1,24 @@
+# Essai temporaire (branche essai-acces) : les machines de GitHub atteignent-elles les sources de données ?
+# Aucun secret, aucune clé. La branche est supprimée après lecture des résultats.
+name: Essai d'accès (temporaire)
+on:
+  push:
+    branches: [essai-acces]
+    paths-ignore: ['essai/resultats.*']
+permissions:
+  contents: write
+jobs:
+  essai:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - name: Essais d'accès
+        run: python3 essai/essai_acces.py
+      - name: Dépôt des résultats
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add essai/resultats.json essai/resultats.md
+          git commit -m "Essai d'accès : résultats" || exit 0
+          git push
