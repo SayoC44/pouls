@@ -1,0 +1,286 @@
+{
+ "quand": "2026-11-16T19:15:17+00:00",
+ "essais": [
+  {
+   "http": 200,
+   "octets": 312,
+   "debut": "{\"country\": \"US\", \"region\": \"Virginia\", \"city\": \"Ashburn\", \"org\": \"AS14618 Amazon.com, Inc.\"}",
+   "erreur": null,
+   "ms": 46,
+   "ok": true,
+   "cle": "machine",
+   "nom": "où tourne la machine",
+   "url": "https://ipinfo.io/json"
+  },
+  {
+   "http": 451,
+   "octets": 0,
+   "debut": "{\n  \"code\": 0,\n  \"msg\": \"Service unavailable from a restricted location according to 'b. Eligibility' in https://www.binance.com/en/terms. Please contact customer service if you believe you received this message in error.\"\n}",
+   "erreur": "HTTP Error 451: ",
+   "ms": 15,
+   "ok": false,
+   "cle": "binance_perp_bougies",
+   "nom": "Binance perpétuels : bougies 1 h",
+   "url": "https://fapi.binance.com/fapi/v1/klines?symbol=BTCUSDT&interval=1h&limit=3"
+  },
+  {
+   "http": 451,
+   "octets": 0,
+   "debut": "{\n  \"code\": 0,\n  \"msg\": \"Service unavailable from a restricted location according to 'b. Eligibility' in https://www.binance.com/en/terms. Please contact customer service if you believe you received this message in error.\"\n}",
+   "erreur": "HTTP Error 451: ",
+   "ms": 7,
+   "ok": false,
+   "cle": "binance_perp_funding",
+   "nom": "Binance perpétuels : funding",
+   "url": "https://fapi.binance.com/fapi/v1/fundingRate?symbol=BTCUSDT&limit=3"
+  },
+  {
+   "http": 451,
+   "octets": 0,
+   "debut": "{\n  \"code\": 0,\n  \"msg\": \"Service unavailable from a restricted location according to 'b. Eligibility' in https://www.binance.com/en/terms. Please contact customer service if you believe you received this message in error.\"\n}",
+   "erreur": "HTTP Error 451: ",
+   "ms": 8,
+   "ok": false,
+   "cle": "binance_perp_oi",
+   "nom": "Binance perpétuels : open interest",
+   "url": "https://fapi.binance.com/futures/data/openInterestHist?symbol=BTCUSDT&period=1h&limit=3"
+  },
+  {
+   "http": 451,
+   "octets": 0,
+   "debut": "{\n  \"code\": 0,\n  \"msg\": \"Service unavailable from a restricted location according to 'b. Eligibility' in https://www.binance.com/en/terms. Please contact customer service if you believe you received this message in error.\"\n}",
+   "erreur": "HTTP Error 451: ",
+   "ms": 8,
+   "ok": false,
+   "cle": "binance_perp_ratio",
+   "nom": "Binance perpétuels : ratio long/short",
+   "url": "https://fapi.binance.com/futures/data/globalLongShortAccountRatio?symbol=BTCUSDT&period=1h&limit=3"
+  },
+  {
+   "http": 451,
+   "octets": 0,
+   "debut": "{\n  \"code\": 0,\n  \"msg\": \"Service unavailable from a restricted location according to 'b. Eligibility' in https://www.binance.com/en/terms. Please contact customer service if you believe you received this message in error.\"\n}",
+   "erreur": "HTTP Error 451: ",
+   "ms": 16,
+   "ok": false,
+   "cle": "binance_spot",
+   "nom": "Binance spot : bougies 1 h",
+   "url": "https://api.binance.com/api/v3/klines?symbol=BTCUSDT&interval=1h&limit=3"
+  },
+  {
+   "http": 200,
+   "octets": 536,
+   "debut": "[[1794848400000,\"64927.21000000\",\"65150.00000000\",\"64799.00000000\",\"64912.62000000\",\"655.77238000\",1794851999999,\"42605578.24405260\",120396,\"430.96628000\",\"2800",
+   "erreur": null,
+   "ms": 613,
+   "ok": true,
+   "cle": "binance_spot_miroir",
+   "nom": "Binance spot, miroir de données publiques",
+   "url": "https://data-api.binance.vision/api/v3/klines?symbol=BTCUSDT&interval=1h&limit=3"
+  },
+  {
+   "http": 200,
+   "octets": 1586,
+   "debut": "(archive zip)",
+   "erreur": null,
+   "ms": 182,
+   "ok": true,
+   "cle": "binance_archives",
+   "nom": "Binance perpétuels : archive journalière (fichier)",
+   "url": "https://data.binance.vision/data/futures/um/daily/klines/BTCUSDT/1h/BTCUSDT-1h-2026-11-14.zip"
+  },
+  {
+   "http": 403,
+   "octets": 0,
+   "debut": "{\n    error:The Amazon CloudFront distribution is configured to block access from your country\n}",
+   "erreur": "HTTP Error 403: Forbidden",
+   "ms": 12,
+   "ok": false,
+   "cle": "bybit_bougies",
+   "nom": "Bybit perpétuels : bougies 1 h",
+   "url": "https://api.bybit.com/v5/market/kline?category=linear&symbol=BTCUSDT&interval=60&limit=3"
+  },
+  {
+   "http": 403,
+   "octets": 0,
+   "debut": "{\n    error:The Amazon CloudFront distribution is configured to block access from your country\n}",
+   "erreur": "HTTP Error 403: Forbidden",
+   "ms": 6,
+   "ok": false,
+   "cle": "bybit_funding",
+   "nom": "Bybit perpétuels : funding",
+   "url": "https://api.bybit.com/v5/market/funding/history?category=linear&symbol=BTCUSDT&limit=3"
+  },
+  {
+   "http": 403,
+   "octets": 0,
+   "debut": "{\n    error:The Amazon CloudFront distribution is configured to block access from your country\n}",
+   "erreur": "HTTP Error 403: Forbidden",
+   "ms": 6,
+   "ok": false,
+   "cle": "bybit_oi",
+   "nom": "Bybit perpétuels : open interest",
+   "url": "https://api.bybit.com/v5/market/open-interest?category=linear&symbol=BTCUSDT&intervalTime=1h&limit=3"
+  },
+  {
+   "http": 200,
+   "octets": 334,
+   "debut": "{\"code\":\"0\",\"data\":[[\"1794855600000\",\"65023.3\",\"65023.3\",\"64810.1\",\"64810.1\",\"118021.1\",\"1180.211\",\"76635203.3635\",\"0\"],[\"1794852000000\",\"64876\",\"65159.5\",\"6468",
+   "erreur": null,
+   "ms": 193,
+   "ok": true,
+   "cle": "okx_bougies",
+   "nom": "OKX perpétuels : bougies 1 h",
+   "url": "https://www.okx.com/api/v5/market/candles?instId=BTC-USDT-SWAP&bar=1H&limit=3"
+  },
+  {
+   "http": 200,
+   "octets": 625,
+   "debut": "{\"code\":\"0\",\"data\":[{\"formulaType\":\"withRate\",\"fundingRate\":\"0.0000614882963635\",\"fundingTime\":\"1794844800000\",\"instId\":\"BTC-USDT-SWAP\",\"instType\":\"SWAP\",\"metho",
+   "erreur": null,
+   "ms": 196,
+   "ok": true,
+   "cle": "okx_funding",
+   "nom": "OKX perpétuels : funding",
+   "url": "https://www.okx.com/api/v5/public/funding-rate-history?instId=BTC-USDT-SWAP&limit=3"
+  },
+  {
+   "http": 200,
+   "octets": 1780,
+   "debut": "{\"chart\":{\"result\":[{\"meta\":{\"currency\":\"USD\",\"symbol\":\"SPY\",\"exchangeName\":\"PCX\",\"fullExchangeName\":\"NYSEArca\",\"instrumentType\":\"ETF\",\"firstTradeDate\":72831780",
+   "erreur": null,
+   "ms": 132,
+   "ok": true,
+   "cle": "yahoo_spy",
+   "nom": "Yahoo : SPY, barres journalières",
+   "url": "https://query1.finance.yahoo.com/v8/finance/chart/SPY?range=5d&interval=1d"
+  },
+  {
+   "http": 200,
+   "octets": 1711,
+   "debut": "{\"chart\":{\"result\":[{\"meta\":{\"currency\":\"EUR\",\"symbol\":\"BNP.PA\",\"exchangeName\":\"PAR\",\"fullExchangeName\":\"Paris\",\"instrumentType\":\"EQUITY\",\"firstTradeDate\":75093",
+   "erreur": null,
+   "ms": 85,
+   "ok": true,
+   "cle": "yahoo_bnp",
+   "nom": "Yahoo : BNP Paribas (Paris)",
+   "url": "https://query1.finance.yahoo.com/v8/finance/chart/BNP.PA?range=5d&interval=1d"
+  },
+  {
+   "http": 200,
+   "octets": 1696,
+   "debut": "{\"chart\":{\"result\":[{\"meta\":{\"currency\":\"USD\",\"symbol\":\"EURUSD=X\",\"exchangeName\":\"CCY\",\"fullExchangeName\":\"CCY\",\"instrumentType\":\"CURRENCY\",\"firstTradeDate\":107",
+   "erreur": null,
+   "ms": 140,
+   "ok": true,
+   "cle": "yahoo_eurusd",
+   "nom": "Yahoo : EUR/USD",
+   "url": "https://query1.finance.yahoo.com/v8/finance/chart/EURUSD=X?range=5d&interval=1d"
+  },
+  {
+   "http": 200,
+   "octets": 1731,
+   "debut": "{\"chart\":{\"result\":[{\"meta\":{\"currency\":\"USD\",\"symbol\":\"^TNX\",\"exchangeName\":\"CGI\",\"fullExchangeName\":\"Cboe Indices\",\"instrumentType\":\"INDEX\",\"firstTradeDate\":-",
+   "erreur": null,
+   "ms": 62,
+   "ok": true,
+   "cle": "yahoo_us10y",
+   "nom": "Yahoo : taux US 10 ans",
+   "url": "https://query1.finance.yahoo.com/v8/finance/chart/%5ETNX?range=5d&interval=1d"
+  },
+  {
+   "http": 200,
+   "octets": 1715,
+   "debut": "{\"chart\":{\"result\":[{\"meta\":{\"currency\":\"USD\",\"symbol\":\"^VIX\",\"exchangeName\":\"CXI\",\"fullExchangeName\":\"Cboe Indices\",\"instrumentType\":\"INDEX\",\"firstTradeDate\":6",
+   "erreur": null,
+   "ms": 58,
+   "ok": true,
+   "cle": "yahoo_vix",
+   "nom": "Yahoo : VIX",
+   "url": "https://query1.finance.yahoo.com/v8/finance/chart/%5EVIX?range=5d&interval=1d"
+  },
+  {
+   "http": 200,
+   "octets": 3132,
+   "debut": "{\"chart\":{\"result\":[{\"meta\":{\"currency\":\"USD\",\"symbol\":\"SPY\",\"exchangeName\":\"PCX\",\"fullExchangeName\":\"NYSEArca\",\"instrumentType\":\"ETF\",\"firstTradeDate\":72831780",
+   "erreur": null,
+   "ms": 54,
+   "ok": true,
+   "cle": "yahoo_spy_15m",
+   "nom": "Yahoo : SPY, bougies 15 min",
+   "url": "https://query1.finance.yahoo.com/v8/finance/chart/SPY?range=1d&interval=15m"
+  },
+  {
+   "http": null,
+   "octets": 0,
+   "debut": "",
+   "erreur": "URLError: <urlopen error timed out>",
+   "ms": 50154,
+   "ok": false,
+   "cle": "stooq_spy",
+   "nom": "Stooq : SPY, barres journalières",
+   "url": "https://stooq.com/q/d/l/?s=spy.us&i=d"
+  },
+  {
+   "http": null,
+   "octets": 0,
+   "debut": "",
+   "erreur": "URLError: <urlopen error timed out>",
+   "ms": 50149,
+   "ok": false,
+   "cle": "stooq_bnp",
+   "nom": "Stooq : BNP Paribas",
+   "url": "https://stooq.com/q/d/l/?s=bnp.fr&i=d"
+  },
+  {
+   "http": 200,
+   "octets": 163414,
+   "debut": "{\"status\":\"ok\",\"result\":[{\"id\":\"1001681714101\",\"title\":\"Rightmove House Price Index MoM\",\"country\":\"GB\",\"indicator\":\"House Price Rightmove MM*\",\"category\":\"prce",
+   "erreur": null,
+   "ms": 52,
+   "ok": true,
+   "cle": "calendrier_tradingview",
+   "nom": "Calendrier économique (flux public de TradingView)",
+   "url": "https://economic-calendar.tradingview.com/events?from=2026-11-16T00:00:00.000Z&to=2026-11-23T00:00:00.000Z&countries=US,EU,JP,CH,GB"
+  },
+  {
+   "http": 200,
+   "octets": 16178,
+   "debut": "[{\"title\":\"BusinessNZ Services Index\",\"country\":\"NZD\",\"date\":\"2026-11-15T16:30:00-05:00\",\"impact\":\"Low\",\"forecast\":\"\",\"previous\":\"50.9\"},{\"title\":\"Prelim GDP Pr",
+   "erreur": null,
+   "ms": 52,
+   "ok": true,
+   "cle": "calendrier_forexfactory",
+   "nom": "Calendrier économique (Forex Factory, semaine)",
+   "url": "https://nfs.faireconomy.media/ff_calendar_thisweek.json"
+  },
+  {
+   "http": 200,
+   "octets": 216,
+   "debut": "{\n\t\"name\": \"Fear and Greed Index\",\n\t\"data\": [\n\t\t{\n\t\t\t\"value\": \"10\",\n\t\t\t\"value_classification\": \"Extreme Fear\",\n\t\t\t\"timestamp\": \"1794787200\",\n\t\t\t\"time_until_upda",
+   "erreur": null,
+   "ms": 51,
+   "ok": true,
+   "cle": "peur_avidite",
+   "nom": "Indice peur et avidité (alternative.me)",
+   "url": "https://api.alternative.me/fng/?limit=1"
+  },
+  {
+   "http": 200,
+   "octets": 75,
+   "debut": "{\"bitcoin\":{\"usd\":64799},\"ethereum\":{\"usd\":1813.31},\"solana\":{\"usd\":71.06}}",
+   "erreur": null,
+   "ms": 26,
+   "ok": true,
+   "cle": "coingecko",
+   "nom": "CoinGecko : cours",
+   "url": "https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum,solana&vs_currencies=usd"
+  }
+ ],
+ "machine": {
+  "country": "US",
+  "region": "Virginia",
+  "city": "Ashburn",
+  "org": "AS14618 Amazon.com, Inc."
+ }
+}
