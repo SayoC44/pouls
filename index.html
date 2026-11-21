@@ -278,9 +278,11 @@ button,input{font:inherit;color:inherit}
 .tip .t{color:var(--muted);font-size:11px}
 .tip .mono{display:block}
 .ratios{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-top:16px}
+.ratios.five{grid-template-columns:repeat(6,minmax(0,1fr))}.ratios.five .ratio{grid-column:span 2}.ratios.five .ratio:nth-child(n+4){grid-column:span 3}
 .ratio{border:1px solid var(--line);border-radius:12px;padding:10px 12px;background:var(--bg-2)}
 .ratio span{display:block;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
-.ratio b{font-family:var(--f-display);font-weight:800;font-size:28px;line-height:1.1;font-variant-numeric:tabular-nums}
+.ratio b{font-family:var(--f-display);font-weight:800;font-size:28px;line-height:1.1;font-variant-numeric:tabular-nums;white-space:nowrap}
+@media (max-width:420px){.ratio b{font-size:clamp(19px,6vw,26px)}}
 .ratio p{margin:2px 0 0;font-size:12px;color:var(--fg-2)}
 .enrich{margin-top:16px;display:flex;align-items:center;gap:12px;flex-wrap:wrap;border:1px dashed var(--line-2);border-radius:12px;padding:12px 14px}
 .enrich p{margin:0;flex:1;min-width:220px;color:var(--fg-2);font-size:13px}
@@ -379,7 +381,7 @@ footer{color:var(--muted);font-size:12px;display:flex;justify-content:space-betw
   .tiles{grid-template-columns:repeat(3,minmax(0,1fr))}
   .sigs{grid-template-columns:1fr}
   .kv{grid-template-columns:repeat(2,minmax(0,1fr))}
-  .ratios{grid-template-columns:1fr}
+  .ratios,.ratios.five{grid-template-columns:repeat(2,minmax(0,1fr))}.ratios.five .ratio,.ratios.five .ratio:nth-child(n+4){grid-column:auto}.ratios .ratio:last-child:nth-child(odd){grid-column:1/-1}
   .chg{font-size:12px} .chg td{padding:5px 4px}
   .fund .fv{font-size:32px}
   #lvSvg{height:360px} .plan{padding:14px 14px 12px 18px} .plan .side{font-size:26px} .rr{margin:0 30px}
@@ -425,7 +427,7 @@ footer{color:var(--muted);font-size:12px;display:flex;justify-content:space-betw
     </div>
   </div>
 
-  <div class="status" id="status"><span class="badge demo">Connexion</span><span>Lecture de Bybit…</span></div>
+  <div class="status" id="status"><span class="badge demo">Connexion</span><span>Lecture de Binance…</span></div>
   <div id="notices"></div>
 
   <section class="hero" id="hero" aria-label="Pouls du marché">
@@ -503,7 +505,7 @@ footer{color:var(--muted);font-size:12px;display:flex;justify-content:space-betw
     </section>
 
     <section class="panel" aria-labelledby="hLev">
-      <div class="panel-h"><h3 id="hLev">Levier</h3><span class="src" id="levSrc">Bybit · contrat perpétuel</span></div>
+      <div class="panel-h"><h3 id="hLev">Levier</h3><span class="src" id="levSrc">Binance · contrat perpétuel</span></div>
       <div id="levBody">
         <div class="fund">
           <div class="fv num" id="fundV">—</div>
@@ -539,7 +541,7 @@ footer{color:var(--muted);font-size:12px;display:flex;justify-content:space-betw
   </div>
 
   <section class="panel" aria-labelledby="hFear">
-    <div class="panel-h"><h3 id="hFear">Degré de peur</h3><span class="src" id="fearSrc">Fear &amp; Greed alternative.me · marché crypto entier</span></div>
+    <div class="panel-h"><h3 id="hFear">Degré de peur</h3><span class="src" id="fearSrc">Fear &amp; Greed CoinMarketCap · marché crypto entier</span></div>
     <div class="fear" id="fearBody">
       <div class="fg-gauge">
         <svg viewBox="0 0 300 172" role="img" aria-labelledby="fgTitle">
@@ -599,7 +601,7 @@ footer{color:var(--muted);font-size:12px;display:flex;justify-content:space-betw
     <div class="learn">
       <details><summary><div><b>Le funding</b><span>Le paiement entre longs et shorts, et pourquoi le neutre vaut +0,01 %</span></div></summary>
         <div class="body">
-          <p>Un contrat perpétuel n'a pas d'échéance. Le funding le ramène vers le prix spot : toutes les 8 h sur Bybit pour le BTC, les longs paient les shorts s'il est positif, les shorts paient les longs s'il est négatif.</p>
+          <p>Un contrat perpétuel n'a pas d'échéance. Le funding le ramène vers le prix spot : toutes les 8 h sur Binance pour le BTC, les longs paient les shorts s'il est positif, les shorts paient les longs s'il est négatif.</p>
           <p>La formule ajoute un intérêt de base de +0,01 % par 8 h. Perp et spot alignés donnent donc +0,01 %, pas 0. Sous +0,01 %, le perp cote déjà avec une décote : le sentiment refroidit.</p>
           <table><tr><th>Funding</th><th>Lecture</th></tr>
             <tr><td>au-dessus de +0,03 %</td><td>Longs entassés, risque de purge</td></tr>
@@ -607,7 +609,7 @@ footer{color:var(--muted);font-size:12px;display:flex;justify-content:space-betw
             <tr><td>0 à +0,007 %</td><td>Refroidi</td></tr>
             <tr><td>sous 0</td><td>Shorts entassés, risque de squeeze</td></tr>
             <tr><td>sous −0,03 % près d'un plus bas</td><td>Capitulation des vendeurs</td></tr></table>
-          <p>Le chiffre affiché est le taux Bybit en cours, ramené à 8 h (certaines cryptos paient toutes les 4 h ou toutes les heures). Le graphique sur 48 h est estimé à partir de l'indice de prime de Bybit, en moyenne glissante sur 8 h.</p>
+          <p>Le chiffre affiché est le taux Binance en cours, ramené à 8 h (certaines cryptos paient toutes les 4 h ou toutes les heures). Le graphique sur 48 h est estimé à partir de l'indice de prime, en moyenne glissante sur 8 h.</p>
         </div></details>
       <details><summary><div><b>L'open interest et la matrice</b><span>Qui ouvre et qui ferme des positions</span></div></summary>
         <div class="body">
@@ -617,7 +619,7 @@ footer{color:var(--muted);font-size:12px;display:flex;justify-content:space-betw
         </div></details>
       <details><summary><div><b>Les positions nettes</b><span>Une estimation, pas une mesure</span></div></summary>
         <div class="body">
-          <p>Chaque heure, la hausse ou la baisse de l'OI est attribuée aux longs ou aux shorts. L'attribution suit le sens du prix de l'heure : Bybit ne publie pas le flux des ordres agressifs (taker) qui permettrait d'être plus fin.</p>
+          <p>Chaque heure, la hausse ou la baisse de l'OI est attribuée aux longs ou aux shorts selon le flux des ordres agressifs (taker) de Binance : la part achetée au marché va aux longs quand l'OI monte, aux shorts qui rachètent quand il baisse. Si l'application est passée sur Bybit, qui ne publie pas ce flux, l'attribution suit le sens du prix de l'heure.</p>
           <p>Les courbes partent de zéro il y a 72 h. Ce qui compte, c'est la pente : des shorts nets qui montent pendant que le prix tient, c'est du carburant de squeeze.</p>
         </div></details>
       <details><summary><div><b>Le régime lisible</b><span>La variable dominante de ton étude</span></div></summary>
@@ -637,18 +639,18 @@ footer{color:var(--muted);font-size:12px;display:flex;justify-content:space-betw
           <p>La capitulation est l'inverse d'un entassement : chute forte, OI qui fond, funding négatif, volume record au plus bas. Elle marque souvent un plus bas proche. La purge des longs et l'euphorie sont les miroirs côté acheteur.</p>
           <p>À 2 conditions sur 4 : vigilance. À 3 : alerte, agis sur tes positions. À 4 : le mécanisme est en cours.</p>
         </div></details>
-      <details><summary><div><b>Le degré de peur</b><span>L'indice Fear &amp; Greed d'alternative.me</span></div></summary>
+      <details><summary><div><b>Le degré de peur</b><span>L'indice Fear &amp; Greed de CoinMarketCap</span></div></summary>
         <div class="body">
-          <p>L'indice mesure le sentiment du marché crypto entier, de 0 (peur extrême) à 100 (avidité extrême). Il ne dépend pas de la crypto analysée. Il est publié une fois par jour, à 01:00 heure suisse, et c'est celui que reprend CoinGlass.</p>
+          <p>L'indice mesure le sentiment du marché crypto entier, de 0 (peur extrême) à 100 (avidité extrême). Il ne dépend pas de la crypto analysée.</p>
           <table><tr><th>Indice</th><th>Zone</th></tr>
-            <tr><td>0 à 25</td><td>Peur extrême</td></tr><tr><td>26 à 46</td><td>Peur</td></tr><tr><td>47 à 54</td><td>Neutre</td></tr><tr><td>55 à 75</td><td>Avidité</td></tr><tr><td>76 à 100</td><td>Avidité extrême</td></tr></table>
-          <p>L'application le lit directement sur alternative.me. Il est proche de celui de CoinMarketCap, avec ses propres seuils : CoinMarketCap n'autorise pas la lecture depuis une application.</p>
+            <tr><td>0 à 19</td><td>Peur extrême</td></tr><tr><td>20 à 39</td><td>Peur</td></tr><tr><td>40 à 59</td><td>Neutre</td></tr><tr><td>60 à 79</td><td>Avidité</td></tr><tr><td>80 à 100</td><td>Avidité extrême</td></tr></table>
+          <p>L'application le lit chez CoinMarketCap par ton relais Supabase. Si le relais ne répond pas, elle affiche à la place celui d'alternative.me, avec ses propres seuils (25, 46, 54 et 75), et le signale sous la jauge.</p>
         </div></details>
     </div>
   </section>
 
   <footer>
-    <span>Sources : Bybit (prix, open interest, funding, indice de prime, ratio long/short) · alternative.me (degré de peur).</span>
+    <span>Sources : Binance par ton relais Supabase (prix, open interest, funding, indice de prime, ratios, flux taker) · CoinMarketCap (degré de peur). En secours : Bybit et alternative.me.</span>
     <span>Outil d'aide à la lecture. Le dimensionnement reste de ton ressort.</span>
   </footer>
 </div>
@@ -879,7 +881,7 @@ function invalidation(A){
 }
 
 function analyze(D){
-  const B=D.bars; const A={base:D.base,demo:D.demo,tvSymbol:D.tvSymbol,spotOnly:D.spotOnly};
+  const B=D.bars; const A={base:D.base,demo:D.demo,tvSymbol:D.tvSymbol,spotOnly:D.spotOnly,exch:D.exch||"Binance"};
   const b15=B["15m"]||B["1h"], b1=B["1h"], bD=B["1D"], bW=B["1W"];
   const price=last(b15.c); A.price=price; A._pfmt=price;
   const n1=b1.c.length; A.chg24=n1>25?price/b1.c[n1-25]-1:null;
@@ -1072,7 +1074,7 @@ function renderRegime(A){
 
 function renderLev(A){
   const L=A.lev, body=$("levBody");
-  $("levSrc").textContent=A.demo?"Données simulées":"Bybit · "+A.base+"USDT perpétuel";
+  $("levSrc").textContent=A.demo?"Données simulées":A.exch+" · "+A.base+"USDT perpétuel";
   let err=$("levErr"); if(err) err.remove();
   if(!L.avail){ body.style.opacity=".35"; const e=document.createElement("div"); e.id="levErr"; e.className="section-err"; e.textContent=L.err||"Données de levier indisponibles."; body.parentNode.insertBefore(e,body); }
   else body.style.opacity="1";
@@ -1083,7 +1085,7 @@ function renderLev(A){
   const lo=-0.05, hi=0.07, pos=v=>clamp((v-lo)/(hi-lo),0,1)*100;
   $("fundMark").style.left=(f==null?pos(0.01):pos(f))+"%"; $("fundNeutral").style.left=pos(0.01)+"%";
   $("fundTicks").innerHTML=[-0.05,-0.03,0,0.01,0.03,0.07].map(v=>"<span style='left:"+pos(v)+"%;transform:translateX("+(pos(v)<3?"0":pos(v)>97?"-100%":"-50%")+")'>"+(v>0?"+":"")+String(v).replace(".",",").replace("-","−")+"</span>").join("");
-  let note=L.fundSrc==="exchange"?"Taux Bybit en cours, ramené à 8 h"+(L.nextFunding?" · prochain règlement "+new Date(L.nextFunding).toLocaleTimeString("fr-CH",{hour:"2-digit",minute:"2-digit"}):""):"Estimation à partir de l'indice de prime (moyenne 8 h). Le trait blanc marque le neutre, +0,01 %.";
+  let note=L.fundSrc==="exchange"?"Taux "+A.exch+" en cours, ramené à 8 h"+(L.nextFunding?" · prochain règlement "+new Date(L.nextFunding).toLocaleTimeString("fr-CH",{hour:"2-digit",minute:"2-digit"}):""):"Estimation à partir de l'indice de prime (moyenne 8 h). Le trait blanc marque le neutre, +0,01 %.";
   $("fundNote").textContent=note;
   const cls=x=>x==null?"flat":x>0.0005?"pos":x<-0.0005?"neg":"flat";
   const row=(lab,o,k,mult,suffix)=>"<tr><td>"+lab+"</td>"+["h1","h4","h24"].map(w=>{ const v=o?o[w]:null; return "<td class='"+cls(v)+"'>"+(v==null?"—":fmtPctSigned(v*(mult||100),2)+(suffix||""))+"</td>"; }).join("")+"</tr>";
@@ -1291,26 +1293,32 @@ function renderFlux(A){
 const fmtFund=v=>v==null||!isFinite(v)?"—":((v>0?"+":"")+v.toLocaleString("fr-FR",{minimumFractionDigits:4,maximumFractionDigits:4}).replace("-","−")+" %");
 function renderBinBlock(A){
   const L=A.lev, el=$("binBlock");
-  if(A.demo){ el.innerHTML="<div class='enrich'><p>Données simulées : la page passe sur Bybit dès que la connexion répond.</p></div>"; return; }
+  if(A.demo){ el.innerHTML="<div class='enrich'><p>Données simulées : la page passe sur Binance dès que la connexion répond.</p></div>"; return; }
   if(!L.avail){ el.innerHTML=""; return; }
-  const r=L.retail, dd=v=>v==null?"":Math.abs(v)<0.005?"Stable sur 24 h.":(v>0?"En hausse de "+fmtNum(v,2):"En baisse de "+fmtNum(-v,2))+" sur 24 h.";
+  const X=A.exch, r=L.retail, t=L.top, k=L.taker, dd=v=>v==null?"":Math.abs(v)<0.005?"Stable sur 24 h.":(v>0?"En hausse de "+fmtNum(v,2):"En baisse de "+fmtNum(-v,2))+" sur 24 h.";
   const longPct=r?Math.round(r.now/(1+r.now)*100):null;
-  el.innerHTML="<div class='ratios'>"+
-    "<div class='ratio'><span>Comptes long / short</span><b class='"+(r&&r.now>2.5?"pos":"")+"'>"+(r?fmtNum(r.now,2):"—")+"</b><p>"+(r?longPct+" % des comptes Bybit sont longs. "+(r.now>2.5?"Le petit trader reste massivement acheteur. ":r.now<0.9?"Le petit trader est vendeur. ":"")+dd(r.d24):"Ratio indisponible pour ce symbole.")+"</p></div>"+
-    "<div class='ratio'><span>Funding Bybit</span><b>"+(L.fundSrc==="exchange"?fmtFund(L.funding):"—")+"</b><p>Ramené à 8 h"+(L.fundInt&&L.fundInt!==480?" (payé toutes les "+(L.fundInt/60)+" h)":"")+(L.nextFunding?". Prochain règlement à "+new Date(L.nextFunding).toLocaleTimeString("fr-CH",{hour:"2-digit",minute:"2-digit"}):"")+".</p></div>"+
-    "<div class='ratio'><span>Open interest</span><b>"+fmtNum(L.oiNow,L.oiNow>1e4?0:1)+"</b><p>"+esc(A.base)+" en contrats ouverts sur Bybit, "+fmtPctSigned(L.dOI.h24*100,1)+" sur 24 h.</p></div></div>";
+  const hm=ms=>new Date(ms).toLocaleTimeString("fr-CH",{hour:"2-digit",minute:"2-digit"});
+  const tiles=[
+    "<div class='ratio'><span>Comptes long / short</span><b class='"+(r&&r.now>2.5?"pos":"")+"'>"+(r?fmtNum(r.now,2):"—")+"</b><p>"+(r?longPct+" % des comptes "+X+" sont longs. "+(r.now>2.5?"Le petit trader reste massivement acheteur. ":r.now<0.9?"Le petit trader est vendeur. ":"")+dd(r.d24):"Ratio indisponible pour ce symbole.")+"</p></div>"];
+  if(X==="Binance"){
+    tiles.push("<div class='ratio'><span>Gros traders (positions)</span><b>"+(t?fmtNum(t.now,2):"—")+"</b><p>"+(t?(t.d24<-0.1?"Les gros allègent leurs longs. ":t.d24>0.1?"Les gros renforcent leurs longs. ":"")+dd(t.d24):"Ratio indisponible pour ce symbole.")+"</p></div>");
+    tiles.push("<div class='ratio'><span>Flux taker achat / vente</span><b class='"+(k&&k.h4>1.05?"pos":k&&k.h4<0.95?"neg":"")+"'>"+(k&&k.h4?fmtNum(k.h4,2):"—")+"</b><p>"+(k?"Sur 4 h. Dernière heure : "+fmtNum(k.h1,2)+". "+(k.h4<0.95?"Les vendeurs frappent au marché.":k.h4>1.05?"Les acheteurs frappent au marché.":"Équilibré."):"Flux indisponible pour ce symbole.")+"</p></div>");
+  }
+  tiles.push("<div class='ratio'><span>Funding "+X+"</span><b>"+(L.fundSrc==="exchange"?fmtFund(L.funding):"—")+"</b><p>Ramené à 8 h"+(L.fundInt&&L.fundInt!==480?" (payé toutes les "+(L.fundInt/60)+" h)":"")+(L.nextFunding?". Prochain règlement à "+hm(L.nextFunding):"")+".</p></div>");
+  tiles.push("<div class='ratio'><span>Open interest</span><b>"+fmtNum(L.oiNow,L.oiNow>1e4?0:1)+"</b><p>"+esc(A.base)+" en contrats ouverts sur "+X+", "+fmtPctSigned(L.dOI.h24*100,1)+" sur 24 h.</p></div>");
+  el.innerHTML="<div class='ratios"+(tiles.length>3?" five":"")+"'>"+tiles.join("")+"</div>";
 }
 
 /* ---------- état, statut, erreurs ---------- */
 function setStatus(html){ $("status").innerHTML=html; }
 function notice(html,tone,actions){ const n=$("notices"); if(!html){ n.innerHTML=""; return; } n.innerHTML="<div class='notice' data-tone='"+(tone||"")+"'><p>"+html+"</p>"+(actions||"")+"</div>"; }
-function liveStatus(A){ const when=new Date(state.lastAt||Date.now()).toLocaleTimeString("fr-CH",{hour:"2-digit",minute:"2-digit",second:"2-digit"}); setStatus("<span class='badge live'>En direct</span><span>Bybit "+esc(A.base)+"USDT · mis à jour à "+when+" · toutes les 2 min</span>"); }
+function liveStatus(A){ const when=new Date(state.lastAt||Date.now()).toLocaleTimeString("fr-CH",{hour:"2-digit",minute:"2-digit",second:"2-digit"}); setStatus("<span class='badge live'>En direct</span><span>"+esc(A.exch)+" "+esc(A.base)+"USDT · mis à jour à "+when+" · toutes les 2 min</span>"); }
 function busy(on,msg){ state.busy=on; $("hero").classList.toggle("scanning",on); $("refreshBtn").disabled=on; if(on&&msg) setStatus("<span class='badge "+(state.live?"live":"demo")+"'>"+(state.live?"En direct":"Démo")+"</span><span>"+esc(msg)+"</span>"); }
 function errText(e,base){
   const c=e&&e.code;
-  if(c==="symbol"||c==="api") return "Bybit ne trouve pas de contrat perpétuel "+base+"USDT. Vérifie le symbole (par exemple 1000PEPE pour PEPE).";
-  if(c==="network") return navigator.onLine===false?"Pas de connexion internet.":"Bybit ne répond pas. Réessaie dans un instant.";
-  if(c==="http") return e.status===403?"Bybit refuse l'accès depuis ce réseau (code 403). Essaie en 4G, ou coupe le VPN.":"Bybit a répondu par une erreur ("+e.status+"). Réessaie dans un instant.";
+  if(c==="symbol"||c==="api") return "Ni Binance ni Bybit n'ont de contrat perpétuel "+base+"USDT. Vérifie le symbole (par exemple 1000PEPE pour PEPE).";
+  if(c==="network") return navigator.onLine===false?"Pas de connexion internet.":"Ni le relais Binance ni Bybit ne répondent. Réessaie dans un instant.";
+  if(c==="http") return e.status===403?"Bybit refuse l'accès depuis ce réseau (code 403) et le relais Binance ne répond pas. Essaie en 4G, ou coupe le VPN.":"Bybit a répondu par une erreur ("+e.status+") et le relais Binance ne répond pas. Réessaie dans un instant.";
   return "Erreur inattendue.";
 }
 
@@ -1353,29 +1361,73 @@ async function bbFundInt(sym){
   try{ const res=await bb("/v5/market/instruments-info",{category:"linear",symbol:sym}); const it=(res.list||[])[0]; const m=it&&+it.fundingInterval; if(m) fundIntCache[sym]=m; return m||480; }catch(e){ return 480; }
 }
 
+/* ---------- Binance par le relais Supabase ---------- */
+const RELAIS="https://zzfqhqwowxfhukobxxim.supabase.co/functions/v1/pouls";
+const RELAIS_Q="&forceFunctionRegion=eu-central-1";
+async function relais(q,ms){
+  const ac=typeof AbortController!=="undefined"?new AbortController():null; const tm=ac?setTimeout(()=>ac.abort(),ms||15000):0;
+  let r; try{ r=await fetch(RELAIS+"?"+q+RELAIS_Q,{cache:"no-store",signal:ac?ac.signal:undefined}); }catch(e){ throw {code:"relais"}; } finally{ clearTimeout(tm); }
+  let j=null; try{ j=await r.json(); }catch(e){}
+  if(!r.ok||!j||j.erreur) throw {code:j&&j.erreur==="symbole"?"symbol":"relais",status:r.status};
+  return j;
+}
+/* Paquet du relais -> structure commune à l'analyse (identique dans l'artefact Pouls Crypto). */
+function fromPacket(P,base){
+  const b=P.b||{}, b15=b["15m"], b1=b["1h"], b4=b["4h"], bD=b["1d"];
+  const bars={"1h":tail(b1,400),"2h":tail(aggregate(b1,7200),300),"4h":b4?tail(b4,300):tail(aggregate(b1,14400),150),"1D":tail(bD,400),"1W":tail(aggregate(bD,604800),80)};
+  if(b15){ bars["15m"]=tail(b15,400); bars["30m"]=tail(aggregate(b15,1800),300); }
+  const oi=P.oi&&P.oi.c&&P.oi.c.length>=30?{t:P.oi.t,o:P.oi.c,h:P.oi.c,l:P.oi.c,c:P.oi.c}:null;
+  const x100=a=>a.map(v=>v*100);
+  const prem=P.pr&&P.pr.c&&P.pr.c.length?{t:P.pr.t,o:x100(P.pr.o),h:x100(P.pr.h),l:x100(P.pr.l),c:x100(P.pr.c)}:null;
+  const F=P.fund;
+  const binance={at:P.at||Date.now(),
+    premium:F&&isFinite(F.rate)?{lastFundingRate:F.rate,nextFundingTime:F.next,intervalMin:(F.intH||8)*60}:null,
+    global:Array.isArray(P.gl)?P.gl.map(x=>({longShortRatio:x.r,timestamp:x.t})):null,
+    top:Array.isArray(P.tp)?P.tp.map(x=>({longShortRatio:x.r,timestamp:x.t})):null,
+    taker:Array.isArray(P.tk)?P.tk.map(x=>({buyVol:x.b,sellVol:x.s,buySellRatio:x.r,timestamp:x.t})):null};
+  return {base,demo:false,exch:"Binance",bars,tvSymbol:"Binance "+base+"USDT",oi,oiErr:"Open interest indisponible pour ce symbole sur Binance.",prem,binance,fetchedAt:Date.now()};
+}
+
+async function bybitD(base,S){
+  const h1=await bbBars(S,"1h",400);
+  const spec=[["15m",400],["30m",300],["2h",300],["4h",300],["1D",400],["1W",80]];
+  const res=await Promise.allSettled([...spec.map(([tf,n])=>bbBars(S,tf,n)),bbOI(S),bbPremium(S),bbTicker(S),bbRatio(S),bbFundInt(S)]);
+  const bars={"1h":h1}, miss=[];
+  spec.forEach(([tf],i)=>{ const r=res[i]; if(r.status==="fulfilled") bars[tf]=r.value; else miss.push(TF_LABEL[tf]); });
+  if(!bars["1D"]||!bars["4h"]) throw (res[4].reason||res[3].reason||{code:"network"});
+  const k=spec.length, val=i=>res[k+i].status==="fulfilled"?res[k+i].value:null;
+  const tick=val(2), ratio=val(3), fint=(tick&&+tick.fundingIntervalHour?+tick.fundingIntervalHour*60:0)||val(4)||480;
+  const ex={at:Date.now(),premium:tick&&tick.fundingRate!=null&&tick.fundingRate!==""?{lastFundingRate:tick.fundingRate,nextFundingTime:tick.nextFundingTime,intervalMin:fint}:null,global:ratio,top:null,taker:null};
+  const oi=val(0);
+  return {D:{base,demo:false,exch:"Bybit",bars,tvSymbol:"Bybit "+S,oi:oi&&oi.c.length>=30?oi:null,oiErr:"Open interest indisponible pour ce symbole sur Bybit.",prem:val(1),binance:ex,fetchedAt:Date.now()},miss};
+}
+
 async function run(sym,quiet){
   if(state.busy) return;
   const base=normBase(sym), S=base+"USDT"; state.symbol=base; store.set("symbol",base); $("symInput").value=base; markChips();
-  busy(true,"Lecture de "+base+" sur Bybit…"); if(!quiet) notice("");
+  busy(true,"Lecture de "+base+" sur Binance…"); if(!quiet) notice("");
   try{
-    const h1=await bbBars(S,"1h",400);
-    const spec=[["15m",400],["30m",300],["2h",300],["4h",300],["1D",400],["1W",80]];
-    const res=await Promise.allSettled([...spec.map(([tf,n])=>bbBars(S,tf,n)),bbOI(S),bbPremium(S),bbTicker(S),bbRatio(S),bbFundInt(S)]);
-    const bars={"1h":h1}, miss=[];
-    spec.forEach(([tf],i)=>{ const r=res[i]; if(r.status==="fulfilled") bars[tf]=r.value; else miss.push(TF_LABEL[tf]); });
-    if(!bars["1D"]||!bars["4h"]) throw (res[4].reason||res[3].reason||{code:"network"});
-    const k=spec.length, val=i=>res[k+i].status==="fulfilled"?res[k+i].value:null;
-    const tick=val(2), ratio=val(3), fint=(tick&&+tick.fundingIntervalHour?+tick.fundingIntervalHour*60:0)||val(4)||480;
-    const ex={at:Date.now(),premium:tick&&tick.fundingRate!=null&&tick.fundingRate!==""?{lastFundingRate:tick.fundingRate,nextFundingTime:tick.nextFundingTime,intervalMin:fint}:null,global:ratio,top:null,taker:null};
-    const oi=val(0);
-    const D={base,demo:false,bars,tvSymbol:"Bybit "+S,oi:oi&&oi.c.length>=30?oi:null,oiErr:"Open interest indisponible pour ce symbole sur Bybit.",prem:val(1),binance:ex,fetchedAt:Date.now()};
+    let D, miss=[], why=null;
+    try{
+      const P=await relais("sym="+encodeURIComponent(S));
+      D=fromPacket(P,base);
+      if(P.fg&&P.fg.now) setFg(P.fg,"CoinMarketCap");
+      const lost=Object.keys(P.err||{}).filter(k=>/^b/.test(k)).map(k=>({b15m:"15 min",b4h:"4 h"})[k]).filter(Boolean); miss=lost;
+    }catch(e){
+      why=e; busy(true,"Binance ne répond pas, lecture de "+base+" sur Bybit…");
+      try{ const r=await bybitD(base,S); D=r.D; miss=r.miss; }
+      catch(e2){ throw (why.code==="symbol"&&(e2.code==="symbol"||e2.code==="api"))?{code:"symbol"}:e2; }
+    }
     state.D=D; state.A=analyze(D); state.live=true; state.lastAt=Date.now();
     renderAll(); liveStatus(state.A);
-    if(miss.length) notice("Unités de temps non chargées : "+esc(miss.join(", "))+". Le régime est calculé sur les autres.","warn");
+    const notes=[];
+    if(why) notes.push(why.code==="symbol"?"Pas de contrat perpétuel "+esc(S)+" sur Binance : lecture sur Bybit.":"Le relais Binance ne répond pas : lecture sur Bybit en attendant.");
+    if(miss.length) notes.push("Unités de temps non chargées : "+esc(miss.join(", "))+". Le régime est calculé sur les autres.");
+    if(notes.length) notice(notes.join(" "),"warn"); else if(quiet) notice("");
   }catch(e){
     notice(esc(errText(e,base)),"err","<button class='btn-ghost' type='button' id='retryBtn'>Réessayer</button>");
     const rb=$("retryBtn"); if(rb) rb.addEventListener("click",()=>run(state.symbol));
-    if(!state.live) setStatus("<span class='badge demo'>Démo</span><span>Données simulées en attendant Bybit</span>");
+    if(!state.live) setStatus("<span class='badge demo'>Démo</span><span>Données simulées en attendant la connexion</span>");
   }finally{
     busy(false); $("app").classList.remove("loading");
     if(state.live&&state.A) liveStatus(state.A);
@@ -1383,25 +1435,32 @@ async function run(sym,quiet){
   }
 }
 
-/* ---------- degré de peur : Fear & Greed alternative.me ---------- */
-const FG_ZONES=[{hi:26,label:"Peur extrême",col:"#ff6b57"},{hi:47,label:"Peur",col:"#ff9f4a"},{hi:55,label:"Neutre",col:"#d9c46a"},{hi:76,label:"Avidité",col:"#86d99a"},{hi:101,label:"Avidité extrême",col:"#2fd3a0"}];
+/* ---------- degré de peur : CoinMarketCap par le relais, alternative.me en secours ---------- */
+const FG_CMC=[{hi:20,label:"Peur extrême",col:"#ff6b57"},{hi:40,label:"Peur",col:"#ff9f4a"},{hi:60,label:"Neutre",col:"#d9c46a"},{hi:80,label:"Avidité",col:"#86d99a"},{hi:101,label:"Avidité extrême",col:"#2fd3a0"}];
+const FG_ALT=[{hi:26,label:"Peur extrême",col:"#ff6b57"},{hi:47,label:"Peur",col:"#ff9f4a"},{hi:55,label:"Neutre",col:"#d9c46a"},{hi:76,label:"Avidité",col:"#86d99a"},{hi:101,label:"Avidité extrême",col:"#2fd3a0"}];
+let FG_ZONES=FG_CMC;
 const FG_FR={"extreme fear":"Peur extrême","fear":"Peur","neutral":"Neutre","greed":"Avidité","extreme greed":"Avidité extrême"};
-const FG_PAGE="https://alternative.me/crypto/fear-and-greed-index/";
+const FG_PAGES={"CoinMarketCap":"https://coinmarketcap.com/fr/charts/fear-and-greed-index/","alternative.me":"https://alternative.me/crypto/fear-and-greed-index/"};
 const fgZone=v=>FG_ZONES.find(z=>v<z.hi)||FG_ZONES[4];
 const fgLabel=o=>FG_FR[String(o&&o.name||"").toLowerCase()]||fgZone(+o.score).label;
+const FG_PAGE_OF=src=>FG_PAGES[src]||FG_PAGES.CoinMarketCap;
+function fgSrcOf(F){ return F&&F.src==="alternative.me"?"alternative.me":"CoinMarketCap"; }
+function useZones(F){ const z=fgSrcOf(F)==="alternative.me"?FG_ALT:FG_CMC; if(z!==FG_ZONES){ FG_ZONES=z; buildFearGauge(); } }
+function setFg(F,src){ state.fg=Object.assign({},F,{src:src||F.src||"CoinMarketCap",at:Date.now()}); state.fgErr=null; store.set("fg",JSON.stringify(state.fg)); renderFear(); }
 async function fgLoad(force){
   const now=Date.now();
-  if(!force&&state.fg&&now-state.fg.at<20*60000) return;
+  if(!force&&state.fg&&now-state.fg.at<20*60000&&fgSrcOf(state.fg)==="CoinMarketCap") return;
+  if(!force&&state.fg&&fgSrcOf(state.fg)==="alternative.me"&&now-state.fg.at<5*60000) return;
   if(state.fgBusy) return;
   state.fgBusy=true; if(!state.fg) renderFear();
   try{
+    try{ const j=await relais("quoi=peur",12000); if(!j.fg||!j.fg.now) throw 0; setFg(j.fg,"CoinMarketCap"); return; }catch(e){}
     const r=await fetch("https://api.alternative.me/fng/?limit=365",{cache:"no-store"}); const j=await r.json();
     const L=(j.data||[]).map(x=>({t:+x.timestamp,v:+x.value,name:x.value_classification})).filter(x=>isFinite(x.v)&&isFinite(x.t)).sort((a,b)=>a.t-b.t);
     if(!L.length) throw 0;
     const n=L.length, o=x=>x?{score:x.v,name:x.name,timestamp:String(x.t)}:null, back=d=>L[Math.max(0,n-1-d)];
     let hi=L[0], lo=L[0]; for(const x of L){ if(x.v>hi.v) hi=x; if(x.v<lo.v) lo=x; }
-    state.fg={at:now,now:o(L[n-1]),yesterday:o(back(1)),lastWeek:o(back(7)),lastMonth:o(back(30)),yearlyHigh:o(hi),yearlyLow:o(lo),hist:L.slice(-31).map(x=>({t:x.t,v:x.v}))};
-    state.fgErr=null; store.set("fg",JSON.stringify(state.fg));
+    setFg({now:o(L[n-1]),yesterday:o(back(1)),lastWeek:o(back(7)),lastMonth:o(back(30)),yearlyHigh:o(hi),yearlyLow:o(lo),hist:L.slice(-31).map(x=>({t:x.t,v:x.v}))},"alternative.me");
   }catch(e){ state.fgErr="net"; }
   finally{ state.fgBusy=false; renderFear(); }
 }
@@ -1411,7 +1470,7 @@ function buildFearGauge(){
   FG_ZONES.forEach((z,i)=>{ const hi=Math.min(100,z.hi); const a0=ang(lo+0.8), a1=ang(hi-0.8);
     s+="<path d='M"+pt(a0,r).map(n=>n.toFixed(1)).join(" ")+" A"+r+" "+r+" 0 0 1 "+pt(a1,r).map(n=>n.toFixed(1)).join(" ")+"' fill='none' stroke='"+z.col+"' stroke-width='14' stroke-linecap='round'"+(REDUCED?"":" style='opacity:0;animation:rise .5s "+(i*110)+"ms forwards'")+"/>"; lo=hi; });
   $("fgArcs").innerHTML=s;
-  let t=""; for(const v of [0,25,50,75,100]){ const [x2,y2]=pt(ang(v),r+24); t+="<text x='"+x2.toFixed(1)+"' y='"+(y2+3.5).toFixed(1)+"' text-anchor='middle'>"+v+"</text>"; }
+  let t=""; for(const v of (FG_ZONES===FG_ALT?[0,25,50,75,100]:[0,20,40,60,80,100])){ const [x2,y2]=pt(ang(v),r+24); t+="<text x='"+x2.toFixed(1)+"' y='"+(y2+3.5).toFixed(1)+"' text-anchor='middle'>"+v+"</text>"; }
   $("fgTicks").innerHTML=t;
 }
 function renderHeroFear(){
@@ -1422,7 +1481,9 @@ function renderHeroFear(){
 }
 function renderFear(){
   const F=state.fg, body=$("fearBody"), hm=d=>new Date(d).toLocaleString("fr-CH",{weekday:"short",hour:"2-digit",minute:"2-digit"});
-  const link=" · <a href='"+FG_PAGE+"' target='_blank' rel='noopener'>alternative.me</a>";
+  useZones(F); const SRC=fgSrcOf(F);
+  $("fearSrc").textContent="Fear & Greed "+SRC+" · marché crypto entier";
+  const link=" · <a href='"+FG_PAGE_OF(SRC)+"' target='_blank' rel='noopener'>"+SRC+"</a>";
   if(!F||!F.now){
     $("fgNeedle").style.transform="rotate(-90deg)"; $("fgNeedle").style.opacity="0"; $("fgVal").textContent="—"; $("fgVal").style.color="var(--muted)";
     $("fgLab").textContent=state.fgBusy?"Lecture…":"Indisponible"; $("fgLab").style.color="var(--muted)"; body.classList.remove("extreme");
@@ -1432,9 +1493,9 @@ function renderFear(){
   $("fgNeedle").style.transform="rotate("+(-90+v*1.8)+"deg)"; $("fgNeedle").style.opacity="1";
   countTo($("fgVal"),v,x=>String(Math.round(x)),1200); $("fgVal").style.color=z.col;
   $("fgLab").textContent=fgLabel(F.now); $("fgLab").style.color=z.col;
-  body.classList.toggle("extreme",v<26||v>=76); body.style.setProperty("--fgc",z.col);
-  const age=Date.now()-F.at;
-  $("fgMeta").innerHTML="Publié chaque jour à 01:00 · lu "+hm(F.at)+(age>26*3600000?" · <span style='color:var(--warn)'>valeur ancienne</span>":"")+link;
+  body.classList.toggle("extreme",v<FG_ZONES[0].hi||v>=FG_ZONES[3].hi); body.style.setProperty("--fgc",z.col);
+  const age=Date.now()-F.at, vt=F.now&&+F.now.timestamp?+F.now.timestamp*1000:0;
+  $("fgMeta").innerHTML=(SRC==="alternative.me"?"Relais indisponible : indice d'alternative.me, publié à 01:00 · lu "+hm(F.at):"Valeur de "+(vt?hm(vt):"—")+" · lue "+hm(F.at))+(age>26*3600000?" · <span style='color:var(--warn)'>valeur ancienne</span>":"")+link;
   if(F.hist&&F.hist.length>1) lineChart($("cFear"),{title:"30 derniers jours",t:F.hist.map(x=>x.t),series:[{name:"Indice",v:F.hist.map(x=>x.v),col:z.col}],fmt:x=>x==null?"—":String(Math.round(x)),height:150,area:false,domain:[0,100],bands:FG_ZONES.map((q,i)=>({lo:i?FG_ZONES[i-1].hi:0,hi:Math.min(100,q.hi),col:q.col}))});
   else $("cFear").innerHTML="";
   const rows=[["Maintenant",F.now,true],["Hier",F.yesterday],["Il y a une semaine",F.lastWeek],["Il y a un mois",F.lastMonth],["Plus haut sur 1 an",F.yearlyHigh],["Plus bas sur 1 an",F.yearlyLow]].filter(r=>r[1]&&isFinite(+r[1].score));
@@ -1477,11 +1538,11 @@ window.addEventListener("online",()=>{ if(!state.busy) run(state.symbol,true); }
     t+="<text x='"+(cx+152*Math.cos(a))+"' y='"+(cy+152*Math.sin(a)+3)+"' text-anchor='middle'>"+(v>0?"+":"")+String(v).replace("-","−")+"</text>"; }
   tk.innerHTML=t;
   $("symInput").value=state.symbol;
-  buildFearGauge();
   try{ const c=JSON.parse(store.get("fg","null")); if(c&&c.now&&c.at) state.fg=c; }catch(e){}
+  FG_ZONES=fgSrcOf(state.fg)==="alternative.me"?FG_ALT:FG_CMC; buildFearGauge();
   ecgResize(); if(!REDUCED) ecg.raf=requestAnimationFrame(ecgFrame);
   state.D=genDemo(); state.A=analyze(state.D); renderAll();
-  setStatus("<span class='badge demo'>Connexion</span><span>Lecture de Bybit…</span>");
+  setStatus("<span class='badge demo'>Connexion</span><span>Lecture de Binance…</span>");
   run(state.symbol);
   if("serviceWorker" in navigator) navigator.serviceWorker.register("./sw.js").catch(()=>{});
 })();
